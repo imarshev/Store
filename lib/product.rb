@@ -14,4 +14,7 @@ class Product
     "#{@price} руб. (осталось #{@amount})"
   end
 
+  def reduce_amount
+    @amount -= 1
+  end
 end

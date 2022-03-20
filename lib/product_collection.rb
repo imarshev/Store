@@ -27,11 +27,11 @@ class ProductCollection
   end
 
   def put! (chosed_product)
-    @collection = @collection + [chosed_product]
+    @collection += [chosed_product]
   end
 
   def take!(chosed_product)
-    @collection = @collection - [chosed_product]
+    @collection = @collection - [chosed_product] if chosed_product.amount == 0
   end
 
   def sum
