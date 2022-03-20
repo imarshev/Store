@@ -26,18 +26,17 @@ class ProductCollection
     self.new(collection)
   end
 
-  def put! (chosed_product)
+  def <<(chosed_product)
     @collection += [chosed_product]
   end
 
-  def take!(chosed_product)
+  def >>(chosed_product)
+    chosed_product.reduce_amount
     @collection = @collection - [chosed_product] if chosed_product.amount == 0
   end
 
   def sum
-    sum = 0
-    @collection.each { |product| sum += product.price }
-    sum
+    @collection.sum(&:price)
   end
 
   def to_s

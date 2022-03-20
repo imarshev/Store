@@ -5,12 +5,11 @@ require_relative "lib/film"
 require_relative "lib/disc"
 
 shop = ProductCollection.from_dir(File.join(__dir__, "data"))
+cart = ProductCollection.new([])
 
 puts "❓ Что хотите купить:"
 puts shop
 puts "0. Выход"
-
-basket = ProductCollection.new([])
 
 users_choice = gets.to_i
 
@@ -22,13 +21,13 @@ until users_choice == 0 || shop.collection.size == 0 do
   end
 
   chosed_product = shop.collection[users_choice-1]
-  chosed_product.reduce_amount
-  shop.take!(chosed_product)
-  basket.put!(chosed_product)
+
+  shop >> (chosed_product)
+  cart << (chosed_product)
 
   puts "Вы выбрали: #{chosed_product}"
 
-  puts "💰 Всего товаров на сумму: #{basket.sum}"
+  puts "💰 Всего товаров на сумму: #{cart.sum}"
 
   unless shop.collection.size == 0
     puts "❓ Что ещё хотите купить?"
@@ -40,5 +39,5 @@ until users_choice == 0 || shop.collection.size == 0 do
 end
 
 puts "🗑 Вы купили:"
-puts basket
-puts "С вас #{basket.sum} руб. Спасибо за покупки!"
+puts cart
+puts "С вас #{cart.sum} руб. Спасибо за покупки!"
