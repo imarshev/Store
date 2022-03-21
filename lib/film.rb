@@ -1,3 +1,5 @@
+require_relative "product"
+
 class Film < Product
   attr_accessor :name, :year, :director
 

@@ -26,10 +26,6 @@ class ProductCollection
     self.new(collection)
   end
 
-  def <<(chosed_product)
-    @collection += [chosed_product]
-  end
-
   def >>(chosed_product)
     chosed_product.reduce_amount
     @collection = @collection - [chosed_product] if chosed_product.amount == 0

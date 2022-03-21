@@ -1,3 +1,5 @@
+require_relative "product"
+
 class Disc < Product
   attr_accessor :name, :genre, :author
 

@@ -11,7 +11,7 @@ class Product
   end
 
   def to_s
-    "#{@price} руб. (осталось #{@amount})"
+    "#{@price} руб. (в магазине: #{@amount})"
   end
 
   def reduce_amount
