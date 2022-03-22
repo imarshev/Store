@@ -3,7 +3,6 @@ require_relative "disc"
 require_relative "book"
 
 class ProductCollection
-
   attr_reader :collection
 
   PRODUCT_TYPES = [
@@ -18,21 +17,25 @@ class ProductCollection
 
   def self.from_dir(dir_path)
     collection = []
-    PRODUCT_TYPES.each { |type|
-      Dir.glob(File.join(dir_path, type[:dir], "*.txt")).each { |file_path|
+    PRODUCT_TYPES.each do |type|
+      Dir.glob(File.join(dir_path, type[:dir], "*.txt")).each do |file_path|
         collection << type[:class].from_file(file_path)
-      }
-    }
-    self.new(collection)
+      end
+    end
+    new(collection)
   end
 
-  def >>(chosed_product)
+  def purchase(chosed_product)
     chosed_product.reduce_amount
     @collection = @collection - [chosed_product] if chosed_product.amount == 0
   end
 
-  def sum
-    @collection.sum(&:price)
+  def size
+    @collection.size
+  end
+
+  def product_by_index(index)
+    @collection[index]
   end
 
   def to_s

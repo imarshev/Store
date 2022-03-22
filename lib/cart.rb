@@ -1,15 +1,10 @@
-require_relative "film"
-require_relative "disc"
-require_relative "book"
-
 class Cart
-
   def initialize
     @cart = []
   end
 
   def <<(chosed_product)
-    @cart = @cart + [chosed_product]
+    @cart << chosed_product
   end
 
   def sum

@@ -13,7 +13,7 @@ class Disc < Product
 
   def self.from_file(path)
     lines = File.readlines(path).map { |line| line.chomp }
-    self.new(
+    new(
       name: lines[0],
       author: lines[1],
       genre: lines[2],

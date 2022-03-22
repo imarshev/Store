@@ -12,7 +12,7 @@ class Film < Product
 
   def self.from_file(path)
     lines = File.readlines(path).map { |line| line.chomp }
-    self.new(
+    new(
       name: lines[0],
       director: lines[1],
       year: lines[2].to_i,
