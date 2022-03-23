@@ -35,7 +35,7 @@ class ProductCollection
   end
 
   def product_by_index(index)
-    @collection[index]
+    @collection[index - 1]
   end
 
   def to_s

@@ -12,6 +12,6 @@ class Cart
   end
 
   def to_s
-    @cart.tally.map.with_index(1){ |(product, count), i| "#{i}. #{product.to_s} В корзине: #{count}" }.join("\n")
+    @cart.tally.map.with_index(1){ |(product, count), i| "#{i}. #{product} В корзине: #{count}" }.join("\n")
   end
 end
